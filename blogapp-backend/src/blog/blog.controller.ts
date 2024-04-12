@@ -47,6 +47,19 @@ export class BlogController {
     return this.blogService.create(createBlogDto);
   }
 
+  @Get('get-allBlogs')
+  @ApiCreatedResponse({ type: BlogEntity })
+  @ApiOperation({ summary: 'List of blogs' })
+  @ApiResponse({
+    status: 201,
+    description: 'The found record',
+    type: [BlogEntity],
+  })
+  async getAllBlogs() {
+    const result = await this.blogService.getAllBlogs();
+    return { data: result, msg: 'All Blogs' };
+  }
+
   @Get('get-blogs')
   @UseGuards(AuthsGuard)
   @ApiCreatedResponse({ type: BlogEntity })

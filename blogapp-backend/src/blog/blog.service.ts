@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
-import { PrismaService } from "../prisma/prisma.service";
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class BlogService {
@@ -13,7 +13,9 @@ export class BlogService {
     const createdBlog = await this.prisma.blog.create({ data: createBlogDto });
     return { msg: 'Blog created successfully', data: createdBlog };
   }
-
+  async getAllBlogs() {
+    return await this.prisma.blog.findMany({});
+  }
   async findAll(createrId: number) {
     return await this.prisma.blog.findMany({
       where: { userId: createrId },
