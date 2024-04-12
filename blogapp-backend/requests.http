@@ -1,0 +1,27 @@
+### List all blogs
+GET http://localhost:3000/blogs
+### Post the blog
+POST http://localhost:3000/blogs
+Content-Type: application/json
+
+{
+     "title": "a beuatiful blog",
+      "content":
+        "A beautiful blog createt by robert in the memory of his beloved",
+      "author": "Robert KC",
+      "likes": 1000
+}
+
+###Update a blog
+PATCH  http://localhost:3000/blogs/9
+Content-Type: application/json
+
+{
+  "author":"Bablu "
+}
+  
+### Get a particular blog
+GET http://localhost:3000/blogs/2
+
+### Delete a particular 
+DELETE   http://localhost:3000/blogs/5

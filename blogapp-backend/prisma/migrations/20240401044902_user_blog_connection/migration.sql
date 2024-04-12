@@ -1,0 +1,9 @@
+-- DropForeignKey
+ALTER TABLE "Blog" DROP CONSTRAINT "Blog_userId_fkey";
+
+-- AlterTable
+ALTER TABLE "Blog" ALTER COLUMN "userId" DROP NOT NULL,
+ALTER COLUMN "userId" SET DEFAULT 1;
+
+-- AddForeignKey
+ALTER TABLE "Blog" ADD CONSTRAINT "Blog_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
